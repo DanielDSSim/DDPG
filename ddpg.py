@@ -55,9 +55,9 @@ RENDER_ENV = False
 # Use Gym Monitor
 GYM_MONITOR_EN = True
 # Gym environment
-ENV_NAME = 'CartPole-v0' # Discrete: Reward factor = 0.1
+#ENV_NAME = 'CartPole-v0' # Discrete: Reward factor = 0.1
 #ENV_NAME = 'CartPole-v1' # Discrete: Reward factor = 0.1
-#ENV_NAME = 'Pendulum-v0' # Continuous: Reward factor = 0.01
+ENV_NAME = 'Pendulum-v0' # Continuous: Reward factor = 0.01
 # Directory for storing gym results
 MONITOR_DIR = './results/' + ENV_NAME
 # Directory for storing tensorboard summary results
@@ -223,19 +223,19 @@ def main(_):
         noise = Noise(DELTA, SIGMA, OU_A, OU_MU)
         reward = Reward(REWARD_FACTOR, GAMMA)
 
-        if GYM_MONITOR_EN:
-            if not RENDER_ENV:
-                env.monitor.start(MONITOR_DIR, video_callable=False, force=True)
-            else:
-                env.monitor.start(MONITOR_DIR, force=True)
+        #if GYM_MONITOR_EN:
+         #   if not RENDER_ENV:
+          #      env.monitor.start(MONITOR_DIR, video_callable=False, force=True)
+           # else:
+            #    env.monitor.start(MONITOR_DIR, force=True)
 
-        try:
-            train(sess, env, actor, critic, noise, reward, discrete)
-        except KeyboardInterrupt:
-            pass
+        #try:
+         #   train(sess, env, actor, critic, noise, reward, discrete)
+        #except KeyboardInterrupt:
+         #   pass
 
-        if GYM_MONITOR_EN:
-            env.monitor.close()
+        #if GYM_MONITOR_EN:
+         #   env.monitor.close()
 
 
 if __name__ == '__main__':
